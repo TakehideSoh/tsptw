@@ -1,9 +1,5 @@
-# Build artifacts
-c_ipasir/solver
-c_ipasir/tsptw_solver
-
-# Third-party libraries
-c_ipasir/third_party/
+# c_ipasir
+c_ipasir/
 
 # Binary/media files
 bdd-06-by-een.pdf
