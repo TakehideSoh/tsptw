@@ -2,10 +2,10 @@
 
 本リポジトリは [Domain-Independent Dynamic Programming](https://arxiv.org/abs/2401.13883) (Ryo Kuroiwa and J. Christopher Beck) における TSPTW の実験に基づく．ソルバーの実装は [didp-models](https://github.com/Kurorororo/didp-models/tree/main) に由来する．
 
-Traveling Salesman Problem with Time Windows (TSPTW) は，デポ 0 と顧客集合 N = {1, ..., n-1} が与えられ，各顧客 i に時間枠 [a_i, b_i]，各辺 (i, j) に移動時間 c_ij が定義される．デポを出発し，すべての顧客を時間枠内にちょうど1回ずつ訪問し，デポに戻る最小コストの巡回路を求める．
+Traveling Salesman Problem with Time Windows (TSPTW) は，デポ 0 と顧客集合 $N = \{1, \ldots, n-1\}$ が与えられ，各顧客 $i$ に時間枠 $[a_i, b_i]$，各辺 $(i, j)$ に移動時間 $c_{ij}$ が定義される．デポを出発し，すべての顧客を時間枠内にちょうど1回ずつ訪問し，デポに戻る最小コストの巡回路を求める．
 
-- 到着時刻が a_i より早い場合は a_i まで待機する
-- 到着時刻が b_i を超える訪問は許されない
+- 到着時刻が $a_i$ より早い場合は $a_i$ まで待機する
+- 到着時刻が $b_i$ を超える訪問は許されない
 
 ### 目的関数
 
@@ -32,11 +32,11 @@ a_(n-1) b_(n-1)
 
 - 1行目: ノード数 n（デポ + 顧客数）
 - 続く n 行: n x n の移動時間行列（対角要素は無視）
-- 続く n 行: 各ノードの時間枠 [a_i, b_i]
+- 続く n 行: 各ノードの時間枠 $[a_i, b_i]$
 
 ## 例
 
-4 ノード（デポ 0，顧客 1, 2, 3）の非対称インスタンス（c_03 = 4, c_30 = 7）:
+4 ノード（デポ 0，顧客 1, 2, 3）の非対称インスタンス（$c_{03} = 4, c_{30} = 7$）:
 
 ```
 4
@@ -183,16 +183,16 @@ $$D[i][j] = c_{ij}$$
 
 #### 制約
 
-$$\texttt{no\_overlap}(\pi, D, \text{is\_direct} = \text{true})$$
+`no_overlap` $(\pi, D, \text{is\\_direct} = \text{true})$
 
-$$\texttt{first}(\pi, x_0)$$
+`first` $(\pi, x_0)$
 
 - `no_overlap`: シーケンス中のインターバルが重ならず，連続する要素間に遷移距離行列で定義された最小距離を確保する（段取り時間に対応）
 - `first`: デポ $x_0$ をシーケンスの先頭に固定（[11] にはない TSPTW 用の追加制約）
 
 #### 目的関数
 
-$$\min \sum_{i \in \{0\} \cup N} D[i][\texttt{type\_of\_next}(\pi, x_i, 0)]$$
+$$\min \sum_{i \in \{0\} \cup N} D[i][\text{type\\_of\\_next}(\pi, x_i, 0)]$$
 
 `type_of_next`$(\pi, x_i, 0)$ はシーケンス $\pi$ 中で $x_i$ の次の要素の型（ノード番号）を返す．最後の要素の場合はデフォルト値 $0$（デポ）を返す．
 

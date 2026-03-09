@@ -9,5 +9,8 @@ c_ipasir/third_party/
 bdd-06-by-een.pdf
 example.png
 
+# Solvers
+solvers/didp/
+
 # Claude Code
 .claude/
