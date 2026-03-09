@@ -1,0 +1,13 @@
+# Build artifacts
+c_ipasir/solver
+c_ipasir/tsptw_solver
+
+# Third-party libraries
+c_ipasir/third_party/
+
+# Binary/media files
+bdd-06-by-een.pdf
+example.png
+
+# Claude Code
+.claude/
